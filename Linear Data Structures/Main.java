@@ -1,7 +1,4 @@
-import implementations.ArrayList;
-import implementations.Stack;
-import implementations.Stack2;
-import implementations.Student;
+import implementations.*;
 
 import java.util.Iterator;
 import java.util.Scanner;
@@ -9,26 +6,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
       // testStack();
-        ArrayList<Integer> myArrayList = new ArrayList<>();
-        myArrayList.add(3);
-        myArrayList.add(3);
-        myArrayList.add(4);
-        myArrayList.add(5);
-        myArrayList.add(3);
-        Iterator<Integer> myIntIterator = myArrayList.iterator();
-        while(myIntIterator.hasNext()){
-            System.out.println(myIntIterator.next());
-        }
-        System.out.println("Stack:");
-        Stack2<Integer> myIntegerStack = new Stack2<>();
-        myIntegerStack.push(3);
-        myIntegerStack.push(4);
-        myIntegerStack.push(7);
-        myIntegerStack.push(5);
-        myIntIterator = myIntegerStack.iterator();
-        while(myIntIterator.hasNext()){
-            System.out.println(myIntIterator.next());
-        }
+     //   testQueue();
+        testSinglyLinklist();
     }
     public static void testArrayList(){
         ArrayList<Integer> myArrayList = new ArrayList<>();
@@ -111,5 +90,31 @@ public class Main {
         myStudentStack.push(student5);
         System.out.println(myStudentStack);
     }
-
+    public static void testQueue(){
+        Queue2<Integer> myIntegerQueue = new Queue2<>();
+        myIntegerQueue.offer(3);
+        myIntegerQueue.offer(4);
+        myIntegerQueue.offer(6);
+        myIntegerQueue.offer(10);
+        System.out.println(myIntegerQueue);
+        System.out.println("Take element "+myIntegerQueue.poll() +" out of queue");
+        System.out.println("Take element "+myIntegerQueue.poll() +" out of queue");
+        System.out.println("Take element "+myIntegerQueue.poll() +" out of queue");
+        System.out.println(myIntegerQueue);
+    }
+    public static void testSinglyLinklist(){
+        SinglyLinkedList<Integer> mySinglyLinkedList = new SinglyLinkedList<>();
+        mySinglyLinkedList.addFirst(3);
+        mySinglyLinkedList.addFirst(4);
+        mySinglyLinkedList.addFirst(7);
+        mySinglyLinkedList.addFirst(8);
+        mySinglyLinkedList.addLast(34);
+        mySinglyLinkedList.addLast(20);
+        mySinglyLinkedList.addLast(30);
+        System.out.println(mySinglyLinkedList);
+        System.out.println("remove element "+mySinglyLinkedList.removeFirst() + " out of the list");
+        System.out.println("remove element "+mySinglyLinkedList.removeFirst() + " out of the list");
+        System.out.println("remove element "+mySinglyLinkedList.removeLast() + " out of the list");
+        System.out.println(mySinglyLinkedList);
+    }
 }

@@ -6,6 +6,9 @@ public class DemoRecursion {
         System.out.println(sum(arr,0));
         System.out.println(factoriel(5));
         printFigure(5);
+        System.out.println(tich(5,6));
+        System.out.println(fib(10));
+        System.out.println(fib(49));
     }
     public static int sum(int[]arr, int index){
         if (index ==arr.length-1){
@@ -40,5 +43,16 @@ public class DemoRecursion {
         for (int i=0;i<n;i++)
             System.out.print(ch);
         System.out.println();
+    }
+    public static int tich(int a, int b){
+        if (b==1){
+            return a;
+        }else{
+            return tich(a,b-1)+a;
+        }
+    }
+    public static long fib(int n){
+        if (n<=1) return 1;
+        return fib(n-1)+fib(n-2);
     }
 }

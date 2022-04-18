@@ -1,9 +1,10 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class SortingAlgorithm {
+    public static final int SIZE=300000;
     public static void main(String[] args){
         int[] arr = {3, 4,8, 5, 7, 5, 6, 2};
-        int[] arr2 = {1, 2, 3, 4, 5};
         System.out.println("Interchangesort:");
         interchangeSort(arr);
         System.out.println("Selection sort:");
@@ -13,8 +14,35 @@ public class SortingAlgorithm {
         System.out.println("Merge sort:");
         mergeSort(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
+        compareAlgorithm();
     }
+    public static void compareAlgorithm(){
+        int[] testArr = new int[SIZE];
+        for (int i=0; i<testArr.length;i++){
+            testArr[i] = i;
+        }
+        int[] testArr2 = Arrays.copyOf(testArr,SIZE);
+        shuffle(testArr2);
 
+        long start1 = System.currentTimeMillis();
+        selectionSort(testArr2);
+        long end1 = System.currentTimeMillis();
+        System.out.println("Selection sort:"+ (end1 - start1));
+
+        long start2 = System.currentTimeMillis();
+        mergeSort(testArr2,0,testArr2.length-1);
+        long end2 = System.currentTimeMillis();
+        System.out.println("Merge sort:" + (end2 - start2));
+    }
+    public static void shuffle(int[] arr){
+        Random rand = new Random();
+        for (int i=0;i<arr.length;i++){
+            int r = i + rand.nextInt(arr.length - i);
+            int temp = arr[i];
+            arr[i] = arr[r];
+            arr[r] = temp;
+        }
+    }
     public static void swap(int[]arr, int i, int j){
         int temp = arr[i];
         arr[i] = arr[j];
@@ -32,7 +60,7 @@ public class SortingAlgorithm {
             if (min!=i){
                 swap(arr,i,min);
             }
-            System.out.println(Arrays.toString(arr));
+          //  System.out.println(Arrays.toString(arr));
         }
     }
     public static void interchangeSort(int[] arr2){
